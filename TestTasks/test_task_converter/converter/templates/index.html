@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<DOCTYPE html>
+  <html>
+    <head>
+      <title>USD-RUB converter</title>
+      <meta charset="utf-8">
+      <meta name="description" content="Simple converter from usd to rub">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+      <header>
+        <h2>Simple converter from usd to rub</h2>
+      </header>
+      <div class="content">
+        {% if rub %}
+        <div class="response">
+          <p>
+            <h4>For now ({{date|time:"H:i"}}, {{date|date:"d E Y"}}):</h4>
+          </p>
+          <p>
+            <h4>{{usd}} dollars = {{rub}} rubles</h4>
+          </p>
+        </div>
+        <p class="propose">
+          Convert other summ:
+        </p>
+        {% endif %}
+        <form action="" method="post">
+          {% csrf_token %}
+          {{form}}
+          <button type="submit" name="convert">Convert to RUB</button>
+        </form>
+    </div>
+  </body>
+</html>
